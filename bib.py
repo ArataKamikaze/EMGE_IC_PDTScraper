@@ -2,16 +2,23 @@ import requests
 from zipfile import ZipFile
 import os as arquivos
 from pathlib import Path
-import numpy as np
+import pandas as pd
 
 
 
-def run(mes_Min, ano_Min, mes_Max, ano_Max, link, nome):
-    create_dataSet(nome)
+def run(mes_Min, ano_Min, mes_Max, ano_Max, link, nome, ):
     getFiles(mes_Min, ano_Min, mes_Max, ano_Max, link, nome)
 
-def create_dataSet(nome):
-    print("oi")
+# def create_dataframe(nome):
+def add_to_dataframe(path):
+    arquivos.listdir(dir)
+    for filename in os.listdir(directory):
+        if filename.endswith(+".csv") or filename.endswith(".png"):
+            print(os.path.join(directory, filename))
+        else:
+            continue
+
+
 def getFiles(mes_Min, ano_Min, mes_Max, ano_Max, link, nome):
 
 
@@ -36,9 +43,12 @@ def getFiles(mes_Min, ano_Min, mes_Max, ano_Max, link, nome):
         if mes_Min <=9:
             open('files/'+ nome+'/'+nome + str(ano_Min) +'-' + '0' + str(mes_Min) + '.zip', 'wb').write(request.content)
             unziper('files/'+ nome+'/'+nome + str(ano_Min) +'-' + '0' + str(mes_Min) + '.zip')
+            add_to_dataframe()
         else:
             open('files/'+ nome+'/'+nome + str(ano_Min) +'-' + str(mes_Min) + '.zip', 'wb').write(request.content)
             unziper('files/'+ nome+'/'+nome + str(ano_Min) +'-' + str(mes_Min) + '.zip')
+            add_to_dataframe()
+
         print(request.headers.get('content-type'))
         mes_Min = mes_Min + 1
         if mes_Min == 12:
