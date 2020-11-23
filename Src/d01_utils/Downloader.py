@@ -2,7 +2,15 @@ import requests
 from zipfile import ZipFile
 from setup import setup
 from Definitions import definitions as d
+import os as os
+
+def unzipper(file):
+    with ZipFile(file, 'r') as zipObj:
+        zipObj.extractall('../../Data/01_raw')
+    os.remove(file)
 class Downloader:
+
+
     def downloadZip(mes_Min, ano_Min, mes_Max, ano_Max, nome):
         setup()
         end = 1
@@ -19,10 +27,10 @@ class Downloader:
             print(request.headers.get('content-type'))
             if mes_Min <= 9:
                 open('../../Data/00_Zip/' + nome + str(ano_Min) + '-' + '0' + str(mes_Min) + '.zip', 'wb').write(request.content)
-                # unziper('files/' + nome + '/' + nome + str(ano_Min) + '-' + '0' + str(mes_Min) + '.zip')
+                unzipper('../../Data/00_Zip/' + nome + str(ano_Min) + '-' + '0' + str(mes_Min) + '.zip')
             else:
                 open('../../Data/00_Zip/' + nome + str(ano_Min) + '-' + str(mes_Min) + '.zip', 'wb').write(request.content)
-                # unziper('files/' + nome + '/' + nome + str(ano_Min) + '-' + str(mes_Min) + '.zip')
+                unzipper('../../Data/00_Zip/' + nome + str(ano_Min) + '-' + str(mes_Min) + '.zip')
             mes_Min += 1
             if mes_Min == 12:
                 ano_Min = ano_Min + 1
@@ -55,19 +63,24 @@ class Downloader:
             if mes_Min <= 9:
                 if dia_Min <=9:
                     open('../../Data/00_Zip/' + nome + str(ano_Min) + '-' + '0' + str(mes_Min) + '-' + '0' + str(dia_Min) + '.zip', 'wb').write(request.content)
+                    unzipper('../../Data/00_Zip/' + nome + str(ano_Min) + '-' + '0' + str(mes_Min) + '-' + '0' + str(dia_Min) + '.zip')
                 else:
                     open('../../Data/00_Zip/' + nome + str(ano_Min) + '-' + '0' + str(mes_Min) +'-'+ str(dia_Min)+'.zip', 'wb').write(
                     request.content)
-                # unziper('files/' + nome + '/' + nome + str(ano_Min) + '-' + '0' + str(mes_Min) + '.zip')
+                    unzipper('../../Data/00_Zip/' + nome + str(ano_Min) + '-' + '0' + str(mes_Min) +'-'+ str(dia_Min)+'.zip')
+
             else:
                 if dia_Min <= 9:
                     open('../../Data/00_Zip/' + nome + str(ano_Min) + '-' + str(mes_Min) + '-' + '0' + str(
                         dia_Min) + '.zip', 'wb').write(request.content)
+                    unzipper('../../Data/00_Zip/' + nome + str(ano_Min) + '-' + str(mes_Min) + '-' + '0' + str(
+                        dia_Min) + '.zip')
                 else:
                     open('../../Data/00_Zip/' + nome + str(ano_Min) + '-' + str(mes_Min) + '-' + str(
                         dia_Min) + '.zip', 'wb').write(
                         request.content)
-                # unziper('files/' + nome + '/' + nome + str(ano_Min) + '-' + str(mes_Min) + '.zip')
+                    unzipper('../../Data/00_Zip/' + nome + str(ano_Min) + '-' + str(mes_Min) + '-' + str(
+                        dia_Min) + '.zip')
             dia_Min+=1
             if (ano_Min%400 == 0 or ano_Min%4 == 0 and ano_Min%100 == 0) and mes_Min == 2:
                 if dia_Min == 29:
@@ -92,4 +105,3 @@ class Downloader:
                end = 0
 
 
-    downloadZipday(1, 1, 2020, 10, 1, 2020, 'empenho_liquidacao_pagamento')
