@@ -32,7 +32,7 @@ def definitions(set):
     Recursos_por_favorecido = ['http://www.portaltransparencia.gov.br/download-de-dados/despesas-favorecidos',
                                'RecebimentosRecursosPorFavorecido']
 
-    Execução_da_Receita = ['http://www.portaltransparencia.gov.br/download-de-dados/receitas',
+    Execucao_da_Receita = ['http://www.portaltransparencia.gov.br/download-de-dados/receitas',
                            'Receitas']
 
     if set == "licitacoes":
@@ -47,5 +47,5 @@ def definitions(set):
         return Recursos_transferidos
     elif set == "Recursos_por_favorecido":
         return Recursos_por_favorecido
-    elif set == "Execução_da_Receita":
+    elif set == "Execucao_da_Receita":
         return Execução_da_Receita
