@@ -48,4 +48,4 @@ def definitions(set):
     elif set == "Recursos_por_favorecido":
         return Recursos_por_favorecido
     elif set == "Execucao_da_Receita":
-        return Execução_da_Receita
+        return Execucao_da_Receita
