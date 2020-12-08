@@ -1,7 +1,6 @@
 
 def definitions(set):
 
-    data_path = 'D:\\EMGE\\2020\\IC\\dev\\EMGE_IC_PDTScraper\\Data\\'
     licitacoes = ['http://www.portaltransparencia.gov.br/download-de-dados/licitacoes/',
                   'ItemLicitação',
                   'Licitação',
