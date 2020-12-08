@@ -1,4 +1,5 @@
-from d01_utils import Downloader
-
+from d01_utils import downloader
+from d01_utils import merger
 # downL.downloadZip(1,2020,2,2020,'contratos')
-Downloader.downloadZip(1, 2020, 2, 2020, 'Execucao_despesa')
+downloader.downloadZip(1, 2020, 2, 2020, 'Execucao_despesa')
+merger.merger()

@@ -1,7 +1,7 @@
 import requests
 from zipfile import ZipFile
 from d01_utils import setup
-from d01_utils import Definitions
+from d01_utils import definitions
 import os as os
 
 def unzipper(file):
@@ -15,7 +15,7 @@ def downloadZip(mes_Min, ano_Min, mes_Max, ano_Max, nome):
     setup.setup()
     end = 1
     while 1 == 1:
-        url = Definitions.definitions(nome)[0]
+        url = definitions.definitions(nome)[0]
         if mes_Min <= 9:
             url = url + '/' + str(ano_Min) + '0' + str(mes_Min)
         else:
@@ -43,7 +43,7 @@ def downloadZipday(dia_Min, mes_Min, ano_Min, dia_Max, mes_Max, ano_Max, nome):
     setup.setup()
     end = 1
     while 1 == 1:
-        url = d.definitions(nome)[0]
+        url = definitions.definitions(nome)[0]
         if mes_Min <= 9:
             url = url + '/' + str(ano_Min) + '0' + str(mes_Min)
             if dia_Min <=9:

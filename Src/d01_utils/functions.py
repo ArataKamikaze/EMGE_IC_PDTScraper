@@ -1,5 +1,5 @@
 import os as os
-from d01_utils import Definitions as d
+from d01_utils import definitions as d
 
 def add_to_dataframe(path, date, name):
     for x in range(1, len(d.definitions(name))):
